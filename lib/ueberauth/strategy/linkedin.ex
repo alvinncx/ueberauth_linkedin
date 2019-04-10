@@ -127,7 +127,7 @@ defmodule Ueberauth.Strategy.LinkedIn do
   defp skip_url_encode_option, do: [path_encode_fun: fn(a) -> a end]
 
   defp user_query do
-    "/v1/people/~:(id,picture-url,email-address,firstName,lastName)?format=json"
+    "/me?projection=(id,firstName,lastName,profilePicture(displayImage~:playableStreams))"
   end
 
   defp fetch_user(conn, token) do
